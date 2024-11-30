@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public class ProductService {
 
-    public List<ProductDto> getProducts() {
+    public List<ProductDto> getProducts(){
         return List.of(new ProductDto());
     }
 
