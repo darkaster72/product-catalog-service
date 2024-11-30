@@ -8,13 +8,20 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+    private final FakeStoreApi fakeStoreApi;
+    private final ProductMapper productMapper;
 
-    public List<ProductDto> getProducts(){
-        return List.of(new ProductDto());
+    public ProductService(FakeStoreApi fakeStoreApi, ProductMapper productMapper) {
+        this.fakeStoreApi = fakeStoreApi;
+        this.productMapper = productMapper;
+    }
+
+    public List<ProductDto> getProducts() {
+        return fakeStoreApi.getProducts().stream().map(productMapper::map).toList();
     }
 
     public Optional<ProductDto> getProductById(Long productId) {
-        return Optional.of(new ProductDto());
+        return fakeStoreApi.getProductById(productId).map(productMapper::map);
     }
 
     public ProductDto createProduct(ProductDto request) {
