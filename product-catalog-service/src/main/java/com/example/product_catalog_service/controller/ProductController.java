@@ -23,7 +23,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable Long id) {
-        return ResponseEntity.of(productService.getProductById(id));
+        return productService.getProductById(id).map(ResponseEntity::ok).orElseThrow(() -> new IllegalArgumentException("No product with id %d".formatted(id)));
     }
 
     @PostMapping

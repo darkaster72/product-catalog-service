@@ -14,7 +14,7 @@ import java.util.Optional;
 @FeignClient(name = "fakeStoreClient", url = "https://fakestoreapi.com")
 public interface FakeStoreClient {
     @GetMapping("/products/{id}")
-    ResponseEntity<Optional<FakeStoreProductDto>> getProductById(@PathVariable("id") Long id);
+    ResponseEntity<FakeStoreProductDto> getProductById(@PathVariable("id") Long id);
 
     @GetMapping("/products")
     ResponseEntity<List<FakeStoreProductDto>> getProducts();

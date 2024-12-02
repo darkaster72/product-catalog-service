@@ -25,7 +25,7 @@ public class FakeProductService implements ProductService {
 
     @Override
     public Optional<ProductDto> getProductById(Long productId) {
-        return fakeStoreClient.getProductById(productId).getBody().map(productMapper::map);
+        return Optional.ofNullable(fakeStoreClient.getProductById(productId).getBody()).map(productMapper::map);
     }
 
     @Override
