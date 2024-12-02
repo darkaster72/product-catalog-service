@@ -11,4 +11,6 @@ public interface ProductService {
     Optional<ProductDto> getProductById(Long productId);
 
     ProductDto createProduct(ProductDto request);
+
+    ProductDto updateProduct(Long id, ProductDto request);
 }
